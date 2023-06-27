@@ -1,0 +1,32 @@
+name: tempest
+base: ubuntu:22.04
+version: 30.1.0
+summary: ROCK image of the OpenStack Tempest Suite
+description: |
+  This is a set of integration tests to be run against a live OpenStack cluster.
+  Tempest has batteries of tests for OpenStack API validation, scenarios, and other specific tests useful in validating an OpenStack deployment.
+license: Apache-2.0
+platforms:
+    amd64:
+
+parts:
+    tempest:
+        plugin: python
+        source: .
+        python-packages:
+          - tempest==30.1.0
+          - barbican-tempest-plugin==1.6.0
+          - cinder-tempest-plugin==1.6.0
+          - designate-tempest-plugin==0.13.0
+          - glance-tempest-plugin==0.3.0
+          - heat-tempest-plugin==1.5.0
+          - ironic-tempest-plugin==2.4.0
+          - keystone-tempest-plugin==0.9.0
+          - manila-tempest-plugin==1.7.0
+          - neutron-tempest-plugin==1.9.0
+          - octavia-tempest-plugin==1.9.0
+          - telemetry-tempest-plugin==1.6.0
+        stage-packages:
+          - python3
+          - python3-venv
+          - python3-dev
